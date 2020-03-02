@@ -1,0 +1,13 @@
+version: "3"
+
+services:
+  server:
+    container_name: repoInfo4Bots
+    build: .
+    command: yarn dev
+    ports:
+      - "7023:7023"
+    volumes:
+      - .:/usr/repoInfo4Bots
+    environment:
+      NODE_ENV: development
