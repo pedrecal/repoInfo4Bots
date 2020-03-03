@@ -7,6 +7,7 @@ services:
     command: yarn dev
     ports:
       - "7023:7023"
+      - "9229:9229"
     volumes:
       - .:/usr/repoInfo4Bots
     environment:

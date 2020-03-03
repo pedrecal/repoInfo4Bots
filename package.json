@@ -7,7 +7,7 @@
   "author": "Alexandre Pedrecal",
   "license": "MIT",
   "scripts": {
-    "dev": "nodemon ./src/start.js"
+    "dev": "nodemon --inspect=0.0.0.0 ./src/start.js"
   },
   "devDependencies": {
     "babel-eslint": "^9.0.0",
