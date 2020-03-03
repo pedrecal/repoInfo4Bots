@@ -12,7 +12,18 @@
 			"address": "localhost",
 			"localRoot": "${workspaceFolder}",
 			"remoteRoot": "/usr/repoInfo4Bots",
-			"protocol": "inspector"
+			"protocol": "inspector",
+			"restart": true
+		},
+		{
+			"name": "Attach Nodemon",
+			"type": "node",
+			"request": "attach",
+			"protocol": "inspector",
+			"restart": true,
+			"skipFiles": [
+				"<node_internals>/**"
+			]
 		}
-	]
+	],
 }
