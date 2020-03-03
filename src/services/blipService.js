@@ -23,7 +23,7 @@ const getReposFilteredInfo = async query => {
   const allRepos = await getRepoData(query);
   const carouselReadyInfo = carouselInfo(allRepos, query.language);
 
-  return carouselReadyInfo;
+  return { ...carouselReadyInfo };
 };
 
 module.exports = { carouselInfo, getReposFilteredInfo };
