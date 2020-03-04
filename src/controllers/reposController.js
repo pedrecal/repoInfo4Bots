@@ -1,5 +1,5 @@
 const { getRepoData } = require('../services/githubService');
-const { getReposFilteredInfo } = require('../services/blipService');
+const { getCarouselDocument } = require('../services/blipService');
 
 /**
  *  @swagger
@@ -20,6 +20,31 @@ const { getReposFilteredInfo } = require('../services/blipService');
  *       schema:
  *         type: string
  *         example: "takenet"
+ *     - in: query
+ *       name: language
+ *       description: "Language for the repositories"
+ *       required: true
+ *       schema:
+ *         type: string
+ *         example: "C#"
+ *     - in: query
+ *       name: sort
+ *       type: string
+ *       description: "Parameter for sorting the repositories"
+ *       enum:
+ *         - created
+ *         - updated
+ *         - pushed
+ *         - full_name
+ *       default: created
+ *     - in: query
+ *       name: direction
+ *       type: string
+ *       description: "Direction in which the parameters are sorted"
+ *       enum:
+ *         - asc
+ *         - desc
+ *       default: asc
  *     responses:
  *       200:
  *         description: "Array of repositories objects"
@@ -33,13 +58,13 @@ const getOrgRepos = async (req, res) => {
 
 /**
  *  @swagger
- * /ReposForCarousel:
+ * /reposCarousel:
  *   get:
  *     tags:
  *     - "Repository"
- *     summary: "Return an array of repositories with the necessary info for blip carousel element"
+ *     summary: "Return an blip's carousel element with repos cards"
  *     description: ""
- *     operationId: "ReposForCarousel"
+ *     operationId: "reposCarousel"
  *     produces:
  *     - "application/json"
  *     parameters:
@@ -52,20 +77,38 @@ const getOrgRepos = async (req, res) => {
  *         example: "takenet"
  *     - in: query
  *       name: language
- *       description: "Langugae for the repositories"
+ *       description: "Language for the repositories"
  *       required: true
  *       schema:
  *         type: string
  *         example: "C#"
+ *     - in: query
+ *       name: sort
+ *       type: string
+ *       description: "Parameter for sorting the repositories"
+ *       enum:
+ *         - created
+ *         - updated
+ *         - pushed
+ *         - full_name
+ *       default: created
+ *     - in: query
+ *       name: direction
+ *       type: string
+ *       description: "Direction in which the parameters are sorted"
+ *       enum:
+ *         - asc
+ *         - desc
+ *       default: asc
  *     responses:
  *       200:
  *         description: "Array of basic information about organization repositories"
  */
 
-const getReposForCarousel = async (req, res) => {
-  const resp = await getReposFilteredInfo(req.query);
+const getCarouselRepos = async (req, res) => {
+  const resp = await getCarouselDocument(req.query);
 
   return res.status(200).json(resp);
 };
 
-module.exports = { getOrgRepos, getReposForCarousel };
+module.exports = { getOrgRepos, getCarouselRepos };

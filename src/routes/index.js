@@ -1,19 +1,19 @@
 const express = require('express');
-const { catchErrors } = require('../handlers/errorHandlers');
+const { catchErrors } = require('../middlewares/errorMiddleware');
 
 const {
   getOrgRepos,
-  getReposForCarousel,
+  getCarouselRepos,
 } = require('../controllers/reposController');
 
 const router = express.Router();
 
 router.get(
-  '/',
-  catchErrors((req, res) => res.send('Olá!'))
+  '/ping',
+  catchErrors((req, res) => res.send('pong'))
 );
 
 router.get('/allRepos', catchErrors(getOrgRepos));
-router.get('/ReposForCarousel', catchErrors(getReposForCarousel));
+router.get('/reposCarousel', catchErrors(getCarouselRepos));
 
 module.exports = router;

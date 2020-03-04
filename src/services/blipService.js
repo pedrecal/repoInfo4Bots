@@ -1,29 +1,38 @@
 const { getRepoData } = require('./githubService');
 
-const carouselInfo = (repos, language) => {
-  const cSharpRepos = [];
+const formatReposData = repos =>
+  repos.map(repo => ({
+    gitAvatar: repo.owner.avatar_url,
+    repoName: repo.name,
+    repoDescription: repo.description,
+    repoLink: repo.html_url,
+    createdAt: repo.created_at,
+    language: repo.language,
+  }));
 
-  repos.forEach(repo => {
-    if (repo.language === language) {
-      cSharpRepos.push({
-        gitAvatar: repo.owner.avatar_url,
-        repoName: repo.name,
-        repoDescription: repo.description,
-        repoLink: repo.html_url,
-        createdAt: repo.created_at,
-        language: repo.language,
-      });
-    }
-  });
+const createRepoCardHeader = repo => ({
+  type: 'application/vnd.lime.media-link+json',
+  value: {
+    title: repo.repoName,
+    text: repo.repoDescription,
+    type: 'image/jpeg',
+    uri: repo.gitAvatar,
+  },
+});
 
-  return cSharpRepos;
+const createRepoCards = repoInfos =>
+  repoInfos.map(ri => ({ header: createRepoCardHeader(ri) }));
+
+const createRepoCarouselDocument = repoInfos => ({
+  itemType: 'application/vnd.lime.document-select+json',
+  items: createRepoCards(repoInfos),
+});
+
+const getCarouselDocument = async query => {
+  const repos = await getRepoData(query);
+  const formattedReposData = formatReposData(repos);
+
+  return createRepoCarouselDocument(formattedReposData.slice(0, 5));
 };
 
-const getReposFilteredInfo = async query => {
-  const allRepos = await getRepoData(query);
-  const carouselReadyInfo = carouselInfo(allRepos, query.language);
-
-  return { ...carouselReadyInfo };
-};
-
-module.exports = { carouselInfo, getReposFilteredInfo };
+module.exports = { formatReposData, getCarouselDocument };
