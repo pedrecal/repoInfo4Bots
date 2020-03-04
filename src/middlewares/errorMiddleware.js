@@ -1,5 +1,5 @@
 /*
-  Catch Errors Handler
+  Catch Errors Middleware
 
   With async/await, you need some way to catch errors
   Instead of using try{} catch(e) {} in each controller, we wrap the function in
@@ -12,9 +12,9 @@ exports.catchErrors = fn =>
   };
 
 /*
-  Not Found Error Handler
+  Not Found Error Middleware
 
-  If we hit a route that is not found, we mark it as 404 and pass it along to the next error handler to display
+  If we hit a route that is not found, we mark it as 404 and pass it along to the next error middleware to display
 */
 exports.notFound = (req, res, next) => {
   const err = new Error('Not Found');

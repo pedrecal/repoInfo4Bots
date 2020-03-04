@@ -5,8 +5,8 @@ const express = require('express');
 const swaggerUi = require('swagger-ui-express');
 const swaggerJSDoc = require('swagger-jsdoc');
 
-const routes = require('./routes/index');
-const errorHandlers = require('./handlers/errorHandlers');
+const routes = require('./routes');
+const errorMiddleware = require('./middlewares/errorMiddleware');
 
 const app = express();
 
@@ -15,6 +15,8 @@ app.use(express.json());
 
 // Exposes a bunch of methods for validating data. Used heavily on userController.validateRegister
 app.use(express.urlencoded({ extended: true }));
+
+app.use('/api', routes);
 
 // Get info from json package to use it in Swagger UI
 const packageInfo = JSON.parse(
@@ -30,7 +32,7 @@ const options = {
       version: packageInfo.version,
       description: packageInfo.description,
     },
-    basePath: `/api/`,
+    basePath: `/api`,
   },
   apis: ['./src/controllers/*.js'],
 };
@@ -38,20 +40,18 @@ const options = {
 const specs = swaggerJSDoc(options);
 
 // Define swagger ui endpoint
-app.use(`/api/docs`, swaggerUi.serve, swaggerUi.setup(specs));
-
-app.use('/api', routes);
+app.use(`/`, swaggerUi.serve, swaggerUi.setup(specs));
 
 // If that above routes didnt work, we 404 them and forward to error handler
-app.use(errorHandlers.notFound);
+app.use(errorMiddleware.notFound);
 
 // Otherwise this was a really bad error we didn't expect! Shoot eh
 if (app.get('env') === 'development') {
   /* Development Error Handler - Prints stack trace */
-  app.use(errorHandlers.developmentErrors);
+  app.use(errorMiddleware.developmentErrors);
 }
 
 // production error handler
-app.use(errorHandlers.productionErrors);
+app.use(errorMiddleware.productionErrors);
 
 module.exports = app;

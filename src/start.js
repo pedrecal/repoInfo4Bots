@@ -1,5 +1,3 @@
-require('dotenv').config({ path: 'variables.env' });
-
 const app = require('./app');
 
 app.set('port', process.env.PORT || 7023);
