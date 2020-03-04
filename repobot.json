@@ -1,0 +1,476 @@
+{
+	"onboarding": {
+		"$contentActions": [
+			{
+				"input": {
+					"bypass": false,
+					"$cardContent": {
+						"document": {
+							"id": "7c118502-574b-4186-801c-079c5cfa7822",
+							"type": "text/plain",
+							"content": "User input"
+						},
+						"editable": false,
+						"deletable": false,
+						"position": "right",
+						"editing": false
+					},
+					"$invalid": false
+				},
+				"$$hashKey": "object:1145",
+				"$invalid": false
+			}
+		],
+		"$conditionOutputs": [
+			{
+				"stateId": "4b2f6436-8ead-4b37-b31e-135609caa667",
+				"$connId": "con_3",
+				"conditions": [
+					{
+						"source": "input",
+						"comparison": "exists",
+						"values": [],
+						"$$hashKey": "object:3506"
+					}
+				],
+				"$invalid": false,
+				"$$hashKey": "object:3487"
+			}
+		],
+		"$enteringCustomActions": [],
+		"$leavingCustomActions": [],
+		"$inputSuggestions": [],
+		"$defaultOutput": {
+			"stateId": "fallback",
+			"$invalid": false
+		},
+		"$tags": [],
+		"id": "onboarding",
+		"root": true,
+		"$position": {
+			"top": "120px",
+			"left": "644px"
+		},
+		"$title": "Start",
+		"$invalidContentActions": false,
+		"$invalidOutputs": false,
+		"$invalidCustomActions": false,
+		"$invalid": false
+	},
+	"fallback": {
+		"$contentActions": [
+			{
+				"input": {
+					"bypass": true,
+					"$cardContent": {
+						"document": {
+							"id": "81e287cd-a146-4967-9384-03b04c1f666c",
+							"type": "text/plain"
+						},
+						"editable": false,
+						"deletable": true,
+						"position": "right",
+						"editing": false
+					},
+					"$invalid": false
+				},
+				"$invalid": false
+			}
+		],
+		"$conditionOutputs": [
+			{
+				"stateId": "error",
+				"conditions": [
+					{
+						"source": "input",
+						"comparison": "matches",
+						"values": [
+							".*"
+						]
+					}
+				],
+				"$connId": "con_8",
+				"$invalid": false
+			}
+		],
+		"$enteringCustomActions": [],
+		"$leavingCustomActions": [],
+		"$inputSuggestions": [],
+		"$defaultOutput": {
+			"stateId": "onboarding",
+			"$invalid": false
+		},
+		"$tags": [],
+		"id": "fallback",
+		"$position": {
+			"top": "79px",
+			"left": "1105px"
+		},
+		"$title": "Exceptions",
+		"$invalidContentActions": false,
+		"$invalidOutputs": false,
+		"$invalidCustomActions": false,
+		"$invalid": false
+	},
+	"error": {
+		"$contentActions": [
+			{
+				"action": {
+					"type": "SendMessage",
+					"settings": {
+						"id": "00000000-0000-0000-0000-000000000002",
+						"type": "application/vnd.lime.chatstate+json",
+						"content": {
+							"state": "composing",
+							"interval": 1000
+						}
+					},
+					"$cardContent": {
+						"document": {
+							"id": "00000000-0000-0000-0000-000000000002",
+							"type": "application/vnd.lime.chatstate+json",
+							"content": {
+								"state": "composing",
+								"interval": 1000
+							}
+						},
+						"editable": true,
+						"deletable": true,
+						"position": "left",
+						"editing": false
+					}
+				},
+				"$invalid": false
+			},
+			{
+				"action": {
+					"type": "SendMessage",
+					"settings": {
+						"id": "00000000-0000-0000-0000-000000000003",
+						"type": "text/plain",
+						"content": "Desculpe, não consegui entender!"
+					},
+					"$cardContent": {
+						"document": {
+							"id": "00000000-0000-0000-0000-000000000003",
+							"type": "text/plain",
+							"content": "Desculpe, não consegui entender!"
+						},
+						"editable": true,
+						"deletable": true,
+						"position": "left",
+						"editing": false
+					}
+				},
+				"$invalid": false
+			},
+			{
+				"input": {
+					"bypass": true,
+					"$cardContent": {
+						"document": {
+							"id": "a5666428-c2e3-4a79-af7d-ea283da1805c",
+							"type": "text/plain"
+						},
+						"editable": false,
+						"deletable": true,
+						"position": "right",
+						"editing": false
+					},
+					"$invalid": false
+				},
+				"$invalid": false
+			}
+		],
+		"$conditionOutputs": [],
+		"$enteringCustomActions": [],
+		"$leavingCustomActions": [],
+		"$inputSuggestions": [],
+		"$defaultOutput": {
+			"stateId": "onboarding",
+			"$invalid": false
+		},
+		"$tags": [],
+		"id": "error",
+		"$position": {
+			"top": "206px",
+			"left": "1122px"
+		},
+		"$title": "Default error",
+		"$invalidContentActions": false,
+		"$invalidOutputs": false,
+		"$invalidCustomActions": false,
+		"$invalid": false
+	},
+	"3614bfc1-2000-4fab-9719-94577ca3ffec": {
+		"$contentActions": [
+			{
+				"action": {
+					"type": "SendMessage",
+					"settings": {
+						"id": "f6f50fdc-56af-4b2d-836c-1f47c67a08a0",
+						"type": "application/vnd.lime.chatstate+json",
+						"content": {
+							"state": "composing",
+							"interval": 1000
+						}
+					},
+					"$cardContent": {
+						"document": {
+							"id": "f6f50fdc-56af-4b2d-836c-1f47c67a08a0",
+							"type": "application/vnd.lime.chatstate+json",
+							"content": {
+								"state": "composing",
+								"interval": 1000
+							}
+						},
+						"editable": true,
+						"deletable": true,
+						"position": "left"
+					}
+				},
+				"$invalid": false,
+				"$$hashKey": "object:1921"
+			},
+			{
+				"action": {
+					"type": "SendRawMessage",
+					"settings": {
+						"metadata": {},
+						"type": "application/vnd.lime.collection+json",
+						"rawContent": "{{response}}"
+					}
+				},
+				"$invalid": false,
+				"$$hashKey": "object:1922"
+			},
+			{
+				"input": {
+					"bypass": false,
+					"$cardContent": {
+						"document": {
+							"id": "6bb16faa-4ef3-4d71-889b-40adc1037492",
+							"type": "text/plain",
+							"textContent": "User input",
+							"content": "User input"
+						},
+						"editable": false,
+						"deletable": true,
+						"position": "right",
+						"editing": false
+					},
+					"$invalid": false
+				},
+				"$$hashKey": "object:6407",
+				"$invalid": false
+			}
+		],
+		"$conditionOutputs": [
+			{
+				"stateId": "3614bfc1-2000-4fab-9719-94577ca3ffec",
+				"$connId": "con_13",
+				"conditions": [
+					{
+						"source": "input",
+						"comparison": "exists",
+						"values": [],
+						"$$hashKey": "object:7281"
+					}
+				],
+				"$invalid": false,
+				"$$hashKey": "object:7272"
+			}
+		],
+		"$enteringCustomActions": [
+			{
+				"type": "ProcessHttp",
+				"$title": "Process HTTP",
+				"$invalid": false,
+				"settings": {
+					"headers": {},
+					"method": "GET",
+					"uri": "https://repo4bots.herokuapp.com/api/reposCarousel?org=takenet&language=C%23",
+					"responseBodyVariable": "response",
+					"responseStatusVariable": "respStatus"
+				},
+				"conditions": []
+			}
+		],
+		"$leavingCustomActions": [],
+		"$inputSuggestions": [],
+		"$defaultOutput": {
+			"stateId": "fallback",
+			"$invalid": false
+		},
+		"$tags": [],
+		"id": "3614bfc1-2000-4fab-9719-94577ca3ffec",
+		"root": false,
+		"$title": "Mostrar Carrossel",
+		"$position": {
+			"top": "341px",
+			"left": "642px"
+		},
+		"$invalidContentActions": false,
+		"$invalidOutputs": false,
+		"$invalidCustomActions": false,
+		"$invalid": false
+	},
+	"4b2f6436-8ead-4b37-b31e-135609caa667": {
+		"$contentActions": [
+			{
+				"action": {
+					"type": "SendMessage",
+					"settings": {
+						"id": "0134f9ae-1544-4097-a419-acf3272020d2",
+						"type": "application/vnd.lime.chatstate+json",
+						"content": {
+							"state": "composing",
+							"interval": 1000
+						}
+					},
+					"$cardContent": {
+						"document": {
+							"id": "0134f9ae-1544-4097-a419-acf3272020d2",
+							"type": "application/vnd.lime.chatstate+json",
+							"content": {
+								"state": "composing",
+								"interval": 1000
+							}
+						},
+						"editable": true,
+						"deletable": true,
+						"position": "left"
+					}
+				},
+				"$invalid": false,
+				"$$hashKey": "object:3998"
+			},
+			{
+				"action": {
+					"type": "SendMessage",
+					"settings": {
+						"id": "afc69e3a-171d-4756-a736-a013b1451e23",
+						"type": "text/plain",
+						"content": "Olá!"
+					},
+					"$cardContent": {
+						"document": {
+							"id": "afc69e3a-171d-4756-a736-a013b1451e23",
+							"type": "text/plain",
+							"content": "Olá!"
+						},
+						"editable": true,
+						"deletable": true,
+						"position": "left"
+					}
+				},
+				"$invalid": false,
+				"$$hashKey": "object:3999"
+			},
+			{
+				"action": {
+					"type": "SendMessage",
+					"settings": {
+						"id": "a9919cb9-4db0-41d6-a4d4-8c572d67bdb6",
+						"type": "application/vnd.lime.chatstate+json",
+						"content": {
+							"state": "composing",
+							"interval": 1000
+						}
+					},
+					"$cardContent": {
+						"document": {
+							"id": "a9919cb9-4db0-41d6-a4d4-8c572d67bdb6",
+							"type": "application/vnd.lime.chatstate+json",
+							"content": {
+								"state": "composing",
+								"interval": 1000
+							}
+						},
+						"editable": true,
+						"deletable": true,
+						"position": "left"
+					}
+				},
+				"$invalid": false,
+				"$$hashKey": "object:4018"
+			},
+			{
+				"action": {
+					"type": "SendMessage",
+					"settings": {
+						"id": "f58dfcad-7eb3-451b-9414-31287c4270d4",
+						"type": "text/plain",
+						"content": "Aqui estão os 5 repositórios do GitHub, em C#, da Take."
+					},
+					"$cardContent": {
+						"document": {
+							"id": "f58dfcad-7eb3-451b-9414-31287c4270d4",
+							"type": "text/plain",
+							"content": "Aqui estão os 5 repositórios do GitHub, em C#, da Take."
+						},
+						"editable": true,
+						"deletable": true,
+						"position": "left"
+					}
+				},
+				"$invalid": false,
+				"$$hashKey": "object:4019"
+			},
+			{
+				"input": {
+					"bypass": true,
+					"$cardContent": {
+						"document": {
+							"id": "b3048801-1ff3-4cc8-a27e-ef6d5ba7e432",
+							"type": "text/plain",
+							"content": "User input"
+						},
+						"editable": false,
+						"deletable": true,
+						"position": "right",
+						"editing": false
+					},
+					"$invalid": false
+				},
+				"$$hashKey": "object:3679",
+				"$invalid": false
+			}
+		],
+		"$conditionOutputs": [
+			{
+				"stateId": "3614bfc1-2000-4fab-9719-94577ca3ffec",
+				"$connId": "con_18",
+				"conditions": [
+					{
+						"source": "input",
+						"comparison": "exists",
+						"values": [],
+						"$$hashKey": "object:4692"
+					}
+				],
+				"$$hashKey": "object:4673",
+				"$invalid": false
+			}
+		],
+		"$enteringCustomActions": [],
+		"$leavingCustomActions": [],
+		"$inputSuggestions": [],
+		"$defaultOutput": {
+			"stateId": "fallback",
+			"$invalid": false
+		},
+		"$tags": [],
+		"id": "4b2f6436-8ead-4b37-b31e-135609caa667",
+		"root": false,
+		"$title": "Saudação",
+		"$position": {
+			"left": "149px",
+			"top": "223px"
+		},
+		"$invalidContentActions": false,
+		"$invalidOutputs": false,
+		"$invalidCustomActions": false,
+		"$invalid": false
+	}
+}
