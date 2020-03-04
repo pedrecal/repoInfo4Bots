@@ -7,7 +7,9 @@ RUN yarn
 
 COPY . .
 
-EXPOSE 7023
-# EXPOSE 9229
+ENV PORT=80
+EXPOSE 80
 
-CMD ["yarn", "dev"]
+ENTRYPOINT [ "yarn" ]
+
+CMD ["start"]
